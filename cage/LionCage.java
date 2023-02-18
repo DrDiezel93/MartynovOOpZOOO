@@ -3,12 +3,12 @@ package cage;
 
 import animals.Animal;
 import animals.Lion;
+import animals.LionComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LionCage implements AnimalCage {
-
-    private int clean;
 
    private ArrayList<Lion> lions;
 
@@ -51,12 +51,23 @@ public class LionCage implements AnimalCage {
 
     @Override
     public void ReturnAnimal() {
-        int randAnimal = (int) ((Math.random() * (lions.size() - 0)) + 0);
-        System.out.println("Случайный лев из клетки");
-        lions.get(randAnimal).printLion();
+        int randAnimal = (int) ((Math.random() * (lions.size())));
+        if(lions.size() == 0) System.out.println("Клетка чиста");
+        else{
+            System.out.println("Случайный лев из клетки");
+            lions.get(randAnimal).printLion();
+        }
     }
 
     public ArrayList<Lion> getLions() {
         return lions;
+    }
+
+    public void sortLions(){
+        Collections.sort(lions);
+    }
+
+    public void sortManeManeVolumeLions() {
+        Collections.sort(lions, new LionComparator());
     }
 }

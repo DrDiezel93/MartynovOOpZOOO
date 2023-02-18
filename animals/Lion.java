@@ -1,6 +1,6 @@
 package animals;
 
-public class Lion extends Animal {
+public class Lion extends Animal implements Comparable<Lion> {
     private int maneVolume;
     protected static final int MAX_WEIGHT = 100;
     protected static final String TYPE = "Лев";
@@ -33,7 +33,7 @@ public class Lion extends Animal {
         return TYPE;
     }
 
-    public void printLion(){
+    public void printLion() {
         System.out.printf("Лев. Взраст: " + getAge() + "; " + "Вес: " + getWeight());
         System.out.println();
     }
@@ -48,5 +48,22 @@ public class Lion extends Animal {
             System.out.println("Льва накормить не удалось");
             return false;
         }
+    }
+
+    @Override
+    public int compareTo(Lion o) {
+        if (this.age > o.getAge()) return 1;
+        else if (this.age < o.getAge()) return -1;
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Lion{" +
+                "maneVolume=" + maneVolume +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", numberOfLimbs=" + numberOfLimbs +
+                '}';
     }
 }

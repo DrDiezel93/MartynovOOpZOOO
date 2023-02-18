@@ -33,8 +33,8 @@ public class Wolf extends Animal{
     public String GetType() {
         return TYPE;
     }
-    public void printLion(){
-        System.out.printf("Волк. Взраст: " + getAge() + "; " + "Вес: " + getWeight() + "Вид: " + this.view);
+    public void printWolf(){
+        System.out.printf("Волк. Вес: " + getWeight() + "; " + "Возраст: " + getAge() + "; " + "Вид: " + this.view);
         System.out.println();
     }
 
@@ -48,5 +48,14 @@ public class Wolf extends Animal{
             System.out.println("Волка накормить не удалось");
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Wolf{" +
+                '\'' +
+                ", weight=" + weight +
+                ", age=" + age +
+                '}';
     }
 }
