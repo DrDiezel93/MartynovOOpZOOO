@@ -7,8 +7,8 @@ public class Snake extends Animal {
     protected static final int MAX_WEIGHT = 100;
     protected static final String TYPE = "Змея";
 
-    public Snake(int age, int weight, int numberOfLimbs, int bodyLength) {
-        super(age, weight, numberOfLimbs);
+    public Snake(int age, int weight, int bodyLength) {
+        super(age, weight);
         this.bodyLength = bodyLength;
     }
 
@@ -31,5 +31,19 @@ public class Snake extends Animal {
     @Override
     public String GetType() {
         return TYPE;
+    }
+
+    public void printSnake(){
+        System.out.printf("Змея. Вес: " + getWeight() + "; " + "Возраст: " + getAge() + "; " + "Длина тела: " + this.bodyLength);
+        System.out.println();
+    }
+
+    @Override
+    public String toString() {
+        return "Snake{" +
+                "bodyLength=" + bodyLength +
+                ", age=" + age +
+                ", weight=" + weight +
+                '}';
     }
 }

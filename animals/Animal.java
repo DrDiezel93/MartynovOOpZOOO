@@ -12,6 +12,11 @@ public abstract class Animal {
     }
 
     public Animal() {
+        this.age = age;
+        this.weight = weight;
+    }
+
+    public Animal(int age, int weight) {
 
     }
 

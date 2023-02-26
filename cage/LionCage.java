@@ -8,29 +8,29 @@ import animals.LionComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class LionCage implements AnimalCage {
+public class LionCage implements AnimalCage<Lion> {
 
-   private ArrayList<Lion> lions;
+    private ArrayList<Lion> lions;
 
-   public LionCage(){
-       lions = new ArrayList<>();
-   }
+    public LionCage() {
+        lions = new ArrayList<>();
+    }
 
-   public LionCage(ArrayList<Lion> lions){
+    public LionCage(ArrayList<Lion> lions) {
         this.lions = lions;
     }
 
     @Override
-    public int AddAnimalCage(Animal animal) {
-        lions.add((Lion)animal);
+    public int AddAnimalCage(Lion animal) {
+        lions.add(animal);
         return lions.size();
     }
 
     @Override
     public int DirtyCage(int weightFood) {
-       int foodOfOne = weightFood / lions.size() ;
-        for (Lion lion : lions ) {
-            if(lion.feed(foodOfOne)){
+        int foodOfOne = weightFood / lions.size();
+        for (Lion lion : lions) {
+            if (lion.feed(foodOfOne)) {
                 weightFood -= foodOfOne;
             }
         }
@@ -41,21 +41,21 @@ public class LionCage implements AnimalCage {
 
     @Override
     public void ClearCage() {
-       if(lions.size() == 0) System.out.println("Клетка чиста");
-       else {
-           int siz = lions.size();
-           lions.clear();
-           System.out.printf("Клетка отчищена от " + siz + " львов");
-       }
+        if (lions.size() == 0) System.out.println("Клетка чиста");
+        else {
+            int siz = lions.size();
+            lions.clear();
+            System.out.printf("Клетка отчищена от " + siz + " львов");
+        }
     }
 
     @Override
     public void ReturnAnimal() {
         int randAnimal = (int) ((Math.random() * (lions.size())));
-        if(lions.size() == 0) System.out.println("Клетка чиста");
-        else{
+        if (lions.size() == 0) System.out.println("Клетка чиста");
+        else {
             System.out.println("Случайный лев из клетки");
-            lions.get(randAnimal).printLion();
+            lions.remove(randAnimal).printLion();
         }
     }
 
@@ -63,7 +63,7 @@ public class LionCage implements AnimalCage {
         return lions;
     }
 
-    public void sortLions(){
+    public void sortLions() {
         Collections.sort(lions);
     }
 

@@ -53,9 +53,9 @@ public class Wolf extends Animal{
     @Override
     public String toString() {
         return "Wolf{" +
-                '\'' +
-                ", weight=" + weight +
+                "view='" + view + '\'' +
                 ", age=" + age +
+                ", weight=" + weight +
                 '}';
     }
 }

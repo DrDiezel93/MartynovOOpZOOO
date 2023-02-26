@@ -5,7 +5,7 @@ import animals.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class WolfCage implements AnimalCage {
+public class WolfCage implements AnimalCage<Wolf> {
     private ArrayList<Wolf> wolfs;
 
     public WolfCage(){
@@ -15,8 +15,8 @@ public class WolfCage implements AnimalCage {
         this.wolfs = wolfs;
     }
     @Override
-    public int AddAnimalCage(Animal animal) {
-        wolfs.add((Wolf) animal);
+    public int AddAnimalCage(Wolf animal) {
+        wolfs.add(animal);
         return wolfs.size();
     }
 
@@ -49,7 +49,7 @@ public class WolfCage implements AnimalCage {
         if(wolfs.size() == 0) System.out.println("Клетка чиста");
         else {
             System.out.println("Случайный волк из клетки");
-            wolfs.get(randAnimal).printWolf();
+            wolfs.remove(randAnimal).printWolf();
         }
     }
 
