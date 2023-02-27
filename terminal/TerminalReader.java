@@ -1,5 +1,7 @@
 package terminal;
 
+import zoo.Zoo;
+
 import java.util.Scanner;
 
 public class TerminalReader{
@@ -21,7 +23,8 @@ public class TerminalReader{
         Scanner iScanner = new Scanner(System.in);
         while (true){
             String input = iScanner.nextLine();
-            commandParser.parserCommand(input);
+            CommandExecutable comEx = new CommandExecutableFactory(new Zoo()).create(commandParser.parserCommand(input));
+            comEx.execute();
             if(input.equals("end")) break;
         }
         iScanner.close();

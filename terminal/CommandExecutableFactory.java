@@ -9,16 +9,15 @@ public class CommandExecutableFactory {
         this.zoo = zoo;
     }
 
-    public void create (String[] input){
+    public CommandExecutable create (String[] input){
         for (String inp : input) {
             if(inp.equals("Удалить")){
-                new DeleteLionExecutable(zoo).execute();
-                System.out.println("Лев удален");
+                return new DeleteLionExecutable(zoo);
             }
             else if (inp.equals("Добавить")){
-                new CreateLionExecutable(zoo).execute();
-                System.out.println("Лев добавлен");
+                return new CreateLionExecutable(zoo);
             }
         }
+        return null;
     }
 }

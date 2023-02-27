@@ -16,6 +16,9 @@ public class Zoo {
         this.snakeCage = snakeCage;
     }
 
+    public Zoo() {
+    }
+
     public void takeOfLion(){
         this.lionCage.ReturnAnimal();
     }
