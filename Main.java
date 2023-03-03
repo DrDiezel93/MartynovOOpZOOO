@@ -4,6 +4,7 @@ import animals.Wolf;
 import cage.LionCage;
 import cage.SnakeCage;
 import cage.WolfCage;
+import terminal.*;
 import zoo.Zoo;
 
 import java.util.ArrayList;
@@ -16,8 +17,8 @@ public class Main {
         Lion lion2 = new Lion(3, 26, 4, 65);
         Lion lion3 = new Lion(6, 45, 4, 55);
         Lion lion4 = new Lion(2, 35, 4, 45);
-        Snake snake1 = new Snake(6, 63, 96);
-        Snake snake2 = new Snake(2, 61, 86);
+        Snake snake1 = new Snake(6, 63, 0, 75);
+        Snake snake2 = new Snake(2, 61, 0, 85);
         WolfCage wolfCage = new WolfCage();
         LionCage lionCage = new LionCage();
         SnakeCage snakeCage = new SnakeCage();
@@ -33,6 +34,11 @@ public class Main {
         System.out.println(lionCage.getLions());
         System.out.println(snakeCage.getSnakes());
         Zoo zoo = new Zoo(lionCage, wolfCage, snakeCage);
-
+        CommandParser comPar = new ParserCommand();
+        TerminalReader terRead = TerminalReader.getTerminalReader(comPar);
+        terRead.setZoo(zoo);
+        terRead.endLess();
+        System.out.println();
+        System.out.println(lionCage.getLions());
     }
 }

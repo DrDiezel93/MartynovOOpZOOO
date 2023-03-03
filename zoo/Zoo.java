@@ -5,6 +5,8 @@ import animals.Snake;
 import animals.Wolf;
 import cage.AnimalCage;
 
+import java.util.Scanner;
+
 public class Zoo {
     private AnimalCage<Lion> lionCage;
     private AnimalCage<Wolf> wolfCage;
@@ -24,7 +26,10 @@ public class Zoo {
     }
 
     public void addLionInCage(){
-        this.lionCage.AddAnimalCage(new Lion());
+        Lion newLion = new Lion(0,0);
+        newLion.setAge(inputAgeAnimal());
+        newLion.setWeight(inputWeightAnimal());
+        this.lionCage.AddAnimalCage(newLion);
     }
 
     @Override
@@ -34,5 +39,15 @@ public class Zoo {
                 ", wolfCage=" + wolfCage +
                 ", snakeCage=" + snakeCage +
                 '}';
+    }
+    public int inputAgeAnimal() {
+        Scanner iScanner = new Scanner(System.in);
+        System.out.print("Введите возраст животного: ");
+        return iScanner.nextInt();
+    }
+    public int inputWeightAnimal() {
+        Scanner iScanner = new Scanner(System.in);
+        System.out.print("Введите вес животного: ");
+        return iScanner.nextInt();
     }
 }

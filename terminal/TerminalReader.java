@@ -4,28 +4,44 @@ import zoo.Zoo;
 
 import java.util.Scanner;
 
-public class TerminalReader{
+public class TerminalReader {
 
     private static TerminalReader terminalReader;
 
+    private Zoo zoo;
+
     private CommandParser commandParser;
+
+    private CommandExecutable comEx;
 
     private TerminalReader(CommandParser commandParser) {
         this.commandParser = commandParser;
     }
-    public static TerminalReader getTerminalReader(CommandParser commandParser){
-        if(terminalReader == null){
+
+
+    public static TerminalReader getTerminalReader(CommandParser commandParser) {
+        if (terminalReader == null) {
             terminalReader = new TerminalReader(commandParser);
         }
         return terminalReader;
     }
-    void endLess(){
+    public void setZoo(Zoo zoo) {
+        this.zoo = zoo;
+    }
+
+    public void setCommandExecutable(Command command) {
+        this.comEx = new CommandExecutableFactoryImpl(zoo).create(command);
+    }
+
+    public void endLess() {
         Scanner iScanner = new Scanner(System.in);
-        while (true){
+        while (true) {
+            System.out.println("Введите действие для льва: 'Добавить' 'Удалить' 'Конец'");
             String input = iScanner.nextLine();
-            CommandExecutable comEx = new CommandExecutableFactory(new Zoo()).create(commandParser.parserCommand(input));
-            comEx.execute();
-            if(input.equals("end")) break;
+            Command command = this.commandParser.parserCommand(input);
+            this.setCommandExecutable(command);
+            this.comEx.execute();
+            if (input.equals("Конец")) break;
         }
         iScanner.close();
     }

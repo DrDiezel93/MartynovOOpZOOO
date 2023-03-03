@@ -10,6 +10,10 @@ public class Lion extends Animal implements Comparable<Lion> {
         this.maneVolume = maneVolume;
     }
 
+    public Lion(int age, int weight) {
+        super(age, weight);
+    }
+
     public Lion() {
 
     }
